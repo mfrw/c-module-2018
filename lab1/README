@@ -1,0 +1,70 @@
+This is a very small example of a calulator library (both shared and static)
+Notice, we have different logical units in different files (add.[ch], mul.[ch] ..)
+We first compile the files into object files, and then merge the object files in a
+shared/static library. It is customary to begin the name of a library with lib.
+
+The static library is has a suffix of `.a` (archive) while as the dynamic library has a suffix of `so` (shared object)
+
+To Compile the library use the `make` utility.
+
+mfrw@kp: make
+gcc -c -fpic add.c
+gcc -c -fpic mul.c
+gcc -c -fpic sub.c
+gcc -c -fpic div.c
+gcc -shared add.o mul.o sub.o div.o  -o libcalshared.so
+ar rcs libcalstatic.a add.o mul.o sub.o div.o 
+
+Now, both the static and dynamic libraries are compiled.
+You can test both the libraries, by writing a small program that calls functions from this library.
+NOTE: It is important to declare the functions, so include `cal.h` in your main program. Also link with the appropriate method.
+
+STATIC:
+
+mfrw@kp: gcc -static -L. main.c -lcalstatic -o staticmain
+mfrw@kp: ./staticmain
+Result = 30
+
+
+DYNAMIC:
+
+mfrw@kp: gcc -L. main.c -lcalshared -o sharedmain
+mfrw@kp: ldd sharedmain // to know about what all libraries it depends on
+	linux-vdso.so.1 (0x00007ffd43dfe000)
+	libcalshared.so => not found
+	libc.so.6 => /usr/lib/libc.so.6 (0x00007f4877a06000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f4877daa000)
+mfrw@kp: ./sharedmain
+sharedmain: error while loading shared libraries: libcalshared.so: cannot open shared object file: No such file or directory
+
+mfrw@kp: export LD_LIBRARY_PATH=. // provide the path for the linker to serach your custom library
+mfrw@kp: ./sharedmain
+Result = 30
+
+OBSERVATION:
+
+It is important you observe and comment on :
+
+1) Why is the size difference so much if both the programs do the same thing.
+2) If you change the source code for the function `add`, and instead of return a+b, change it to a-b, 
+   execute both the programs (sharedmain & staticmain), should the output be different. You only have to 
+   recompile the library, not the sharedmain or staticmain programs.
+   If the output was different, what would be the reason ?
+   Can this be used in an efficent way ?
+
+BONUS: (Optional)
+
+Try to go through the manual page of ld.so
+man ld.so
+
+There is an extremely useable env variable, which goes by the name of LD_PRELOAD.
+It can be used to intercept library calls and execute custom functions instead.
+
+If you think you are done will all of this, it seems too easy and you are up for a small challenge.
+
+Try to intercept printf from any off-the shelf hello-world program, and make it print something else.
+
+
+
+PS: Don't worry too much if the bonus part does not make any sense, just assume you've a lot to catch up. (ALL OTHER PARTS SHOULD MAKE SENSE)
+I hope the security people may find it useful for their CTFs.
