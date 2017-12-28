@@ -12,3 +12,5 @@ PLEASE DON'T COPY CODE.
 SUMISSION: A zip file (ZIP means _ZIP_ not rar or any other format), containing
 the makefile, the str.h str.c, main.c and a small readme.txt where you
 write your brief experience, and steps of what you did.
+In the readme.txt, mention explicitly what functions you implemented and what you did not.
+Failure to mention may render your submission ungraded.
