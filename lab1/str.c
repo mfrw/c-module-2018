@@ -7,7 +7,7 @@
 
 /* One is done for you */
 
-int strncasecmp(const char *s1, const char *s2, int len)
+int my_strncasecmp(const char *s1, const char *s2, int len)
 {
 	unsigned char c1, c2;
 

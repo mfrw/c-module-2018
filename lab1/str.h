@@ -1,12 +1,11 @@
 /**
- * strncasecmp - Case insensitive, length-limited string comparison
+ * my_strncasecmp - Case insensitive, length-limited string comparison
  * @s1: One string
  * @s2: The other string
  * @len: the maximum number of characters to compare
  */
-int strncasecmp(const char *s1, const char *s2, int len);
+int my_strncasecmp(const char *s1, const char *s2, int len);
 
-int strcasecmp(const char *s1, const char *s2);
 
 /**
  * strcpy - Copy a %NUL terminated string
@@ -16,7 +15,7 @@ int strcasecmp(const char *s1, const char *s2);
 char *strcpy(char *dest, const char *src);
 
 /**
- * strncpy - Copy a length-limited, C-string
+ * my_strncpy - Copy a length-limited, C-string
  * @dest: Where to copy the string to
  * @src: Where to copy the string from
  * @count: The maximum number of bytes to copy
@@ -28,7 +27,7 @@ char *strcpy(char *dest, const char *src);
  * count, the remainder of @dest will be padded with %NUL.
  *
  */
-char *strncpy(char *dest, const char *src, int count);
+char *my_strncpy(char *dest, const char *src, int count);
 
 /**
  * strcat - Append one %NUL-terminated string to another
@@ -38,7 +37,7 @@ char *strncpy(char *dest, const char *src, int count);
 char *strcat(char *dest, const char *src);
 
 /**
- * strncat - Append a length-limited, C-string to another
+ * my_strncat - Append a length-limited, C-string to another
  * @dest: The string to be appended to
  * @src: The string to append to it
  * @count: The maximum numbers of bytes to copy
@@ -46,7 +45,7 @@ char *strcat(char *dest, const char *src);
  * Note that in contrast to strncpy(), strncat() ensures the result is
  * terminated.
  */
-char *strncat(char *dest, const char *src, int count);
+char *my_strncat(char *dest, const char *src, int count);
 
 /**
  * strcmp - Compare two strings
@@ -56,12 +55,12 @@ char *strncat(char *dest, const char *src, int count);
 int strcmp(const char *cs, const char *ct);
 
 /**
- * strncmp - Compare two length-limited strings
+ * my_strncmp - Compare two length-limited strings
  * @cs: One string
  * @ct: Another string
  * @count: The maximum number of bytes to compare
  */
-int strncmp(const char *cs, const char *ct, int count);
+int my_strncmp(const char *cs, const char *ct, int count);
 
 /**
  * strchr - Find the first occurrence of a character in a string
@@ -114,10 +113,10 @@ char *skip_spaces(const char *str);
 char *strim(char *s);
 
 /**
- * strlen - Find the length of a string
+ * my_strlen - Find the length of a string
  * @s: The string to be sized
  */
-int strlen(const char *s);
+int my_strlen(const char *s);
 
 /**
  * strnlen - Find the length of a length-limited string
@@ -127,10 +126,10 @@ int strlen(const char *s);
 int strnlen(const char *s, int count);
 
 /**
- * memset - Fill a region of memory with the given value
+ * my_memset - Fill a region of memory with the given value
  * @s: Pointer to the start of the area.
  * @c: The byte to fill the area with
  * @count: The size of the area.
  *
  */
-void *memset(void *s, int c, int count);
+void *my_memset(void *s, int c, int count);
