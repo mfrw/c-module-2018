@@ -1,0 +1,14 @@
+Using lab1demo as reference implement a naive string library both static & dynamic.
+
+The header file is full with comments on what each function expects and returns.
+You can use google (of-course).
+
+Start incrementally by implementing a few functions and test.
+
+PS: Don't panic, stack-overflow is your friend, but don't copy code, learn the concepts.
+PLEASE DON'T COPY CODE.
+
+
+SUMISSION: A zip file (ZIP means _ZIP_ not rar or any other format), containing
+the makefile, the str.h str.c, main.c and a small readme.txt where you
+write your brief experience, and steps of what you did.
